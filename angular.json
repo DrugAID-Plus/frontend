@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/drug-aid",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,9 +27,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/uikit/css/uikit.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/uikit.min.js",
+              "src/uikit-icons.min.js"
+            ]
           },
           "configurations": {
             "production": {
