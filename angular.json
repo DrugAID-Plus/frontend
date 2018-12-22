@@ -31,8 +31,8 @@
               "src/assets/uikit/css/uikit.min.css"
             ],
             "scripts": [
-              "src/uikit.min.js",
-              "src/uikit-icons.min.js"
+              "src/assets/uikit/js/uikit.min.js",
+              "src/assets/uikit/js/uikit-icons.min.js"
             ]
           },
           "configurations": {

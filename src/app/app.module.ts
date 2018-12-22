@@ -1,3 +1,7 @@
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
+import { HomeModule } from './home/home.module';
+import { SearchModule } from './search/search.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,9 +14,13 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SearchModule,
+    HomeModule,
+    SharedModule,
+    CoreModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
