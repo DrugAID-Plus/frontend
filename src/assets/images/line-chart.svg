@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1250px" height="488px" viewBox="0 0 1250 488" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Line Chart Decoration</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="94.2416428%" y1="28.8558712%" x2="0%" y2="97.4958672%" id="linearGradient-1">
+            <stop stop-color="#39ACFA" offset="0%"></stop>
+            <stop stop-color="#2A3B89" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="100%" x2="48.6636619%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#39ACFA" offset="0%"></stop>
+            <stop stop-color="#39ACFA" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-Page" transform="translate(-190.000000, -2133.000000)" fill-rule="nonzero">
+            <g id="Statistic-Section" transform="translate(194.000000, 2022.000000)">
+                <g id="Line-Chart-Decoration" transform="translate(0.000000, 12.000000)">
+                    <path d="M0.61316843,584.258608 L10.9433321,569.155409 L96.6913984,443.787589 C117.581477,413.245284 159.275662,405.420608 189.817968,426.310687 C193.112441,428.564014 196.19897,431.107224 199.040733,433.909975 L218.195378,452.80167 C244.540712,478.785341 286.961752,478.492155 312.945424,452.146821 C313.421086,451.664538 313.889407,451.17507 314.350225,450.678584 L414.29076,343.002554 C436.013981,319.597935 471.235647,314.776455 498.449544,331.482092 L533.927137,353.260515 C557.775175,367.899972 588.209665,366.176487 610.252492,348.938262 L711.171901,270.015921 C735.13031,251.279647 768.703393,251.031792 792.935818,269.412296 L813.383762,284.922239 C839.12033,304.443648 875.121632,302.822097 898.999001,281.066004 L1062.45297,132.133352 C1082.00734,114.316202 1110.21474,109.673089 1134.4483,120.282475 L1168.22912,135.071632 C1198.25102,148.215141 1233.37476,137.711853 1251.25254,110.244577 L1308.5542,22.2067869 C1323.02511,-0.0261951327 1352.77949,-6.31859879 1375.01248,8.15230998 C1388.62949,17.0152954 1396.84302,32.1613581 1396.84302,48.4086851 L1396.84302,538.454191" id="Path-2" stroke="url(#linearGradient-1)" stroke-width="9"></path>
+                    <circle id="Oval-2" stroke="#3067B5" stroke-width="4" fill="#FFFFFF" cx="453" cy="326" r="15"></circle>
+                    <circle id="Oval-2-Copy" stroke="#358EDC" stroke-width="4" fill="#FFFFFF" cx="860" cy="298" r="15"></circle>
+                    <circle id="Oval-2-Copy-2" stroke="url(#linearGradient-2)" stroke-width="4" fill="#FFFFFF" cx="1107" cy="116" r="15"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
