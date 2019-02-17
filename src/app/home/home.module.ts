@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,7 +10,8 @@ import { HomeComponent } from './pages/home/home.page';
   declarations: [ HomeComponent ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    SharedModule
   ]
 })
 export class HomeModule { }

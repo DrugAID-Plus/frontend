@@ -3,8 +3,8 @@
     <div class="uk-container">
       <h1 class="uk-text-center uk-animation-fade" id="title">Welcome to DrugAID+</h1>
       <div class="uk-margin uk-animation-slide-bottom-small" id="search">
-        <input class="uk-input" id="search-bar" type="text" placeholder="Search a drug, a side effect, or anything">
-        <button class="uk-button" id="search-button">Search</button>
+        <input class="uk-input" [(ngModel)]="searchValue" id="search-bar" type="text" placeholder="Search a drug, a side effect, or anything">
+        <button class="uk-button" id="search-button" (click)="sendSearchRequest()">Search</button>
       </div>
     </div>
   </div>

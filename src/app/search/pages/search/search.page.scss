@@ -1,0 +1,209 @@
+#top { 
+  height: 100vh;
+  background: url('/assets/images/top-background.webp') no-repeat, url('/assets/images/top-background.png') no-repeat;
+  background-size: 100%;
+}
+
+.top-all {
+  padding-top: 20vh
+}
+
+#title {
+	color: #FFFFFF;
+	font-size: 70px;
+	font-weight: 700;
+	line-height: 82px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 10px 0 rgba(126,124,124,0.5);
+  margin-bottom: 30px;
+}
+
+#search-bar {
+	height: 70px;
+	width: 60%;
+	border-radius: 21px;
+	background-color: #FFFFFF;
+  box-shadow: 0 5px 22px 3px rgba(61,59,59,0.5);
+	font-family: "Heiti TC" !important;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 25px;
+  text-align: left;
+  padding-left: 45px;
+  transition: all 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+  &:focus {
+    box-shadow: 0 0 0 0;
+    border-color: #FFFFFF;
+    transition: all 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+}
+
+#search {
+  text-align: center;
+}
+
+
+
+#search-button {
+  height: 70px;
+  margin-left: 5px;
+	width: 197px;
+	border-radius: 21px;
+	background: linear-gradient(130.58deg, #4BBEDE 0%, #7B91DA 100%);
+  box-shadow: 0 5px 11px 1px rgba(61,59,59,0.5);
+  color: white;
+  font-family: "Heiti TC" !important;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 25px;
+	text-align: center;
+  transition: all 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &:hover {
+    box-shadow: 0 0 0 0 rgba(61,59,59,0.5);
+    transition: all 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+}
+
+
+// Main CSS
+
+#main {
+  margin-top: -25%;
+  min-height: 400px;
+  #features {
+    margin-bottom: -300px;
+  }
+  .feature-card {
+    height: 514px;
+    width: 369px;
+    border-radius: 21px;
+    background-color: #FFFFFF;
+    box-shadow: 0 5px 22px 3px rgba(106,102,102,0.5);
+    .uk-card-title {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+  
+    p {
+      color: #00000075;
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 33px;
+      text-align: center;
+    }
+    
+  }
+}
+
+
+// Most Searched CSS
+#most-searched {
+  background: url('/assets/images/most-searched-background.svg') no-repeat, url('/assets/images/most-searched-background.webp') no-repeat,
+  url('/assets/images/most-searched-background.png') no-repeat;
+  background-size: 100%;
+  height: 60vh;
+}
+
+// Database Size CSS
+#database-size {
+  background-color: #131623;
+  height: 72vh;
+  overflow: hidden;
+  .database-hr {
+    margin-top: 125.5px;
+    margin-bottom: 100px;
+    border: 3px solid #FFFFFF;
+  }
+  h1 {
+    color: #FFFFFF;
+    font-family: Avenir;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 68px;
+    text-shadow: 0 2px 10px 0 rgba(126,124,124,0.5);
+  }
+
+  #line-chart {
+    width: 120%;
+  }
+  .svg-container {
+    margin-right: 0;
+    padding-right: 0;
+    margin-top: -200px;
+  }
+}
+
+// White Paper CSS
+
+#white-paper {
+  padding-top: 111px;
+  background-color: #F4F4F4;
+  h1 {
+    color: #000000;
+    font-size: 3.0rem;
+    font-weight: 900;
+    line-height: 68px;
+  }
+  .uk-container {
+    margin-bottom: 0;
+  }
+
+  #white-paper-image {
+    margin-bottom: 89px;
+    margin-top: 100px;
+    width: 369px;
+    height: 514px;
+    border-radius: 21px;
+    background-color: #FFFFFF;
+    box-shadow: 0 5px 22px 3px rgba(184,183,183,0.5);
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:hover {
+      box-shadow: none;
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+  }
+
+  p {
+  width: 70%;
+  margin: 0 auto;
+  text-align: justify;
+	color: #000000;
+	font-family: Avenir;
+	font-size: 1.5rem;
+	line-height: 33px;
+  }
+}
+
+
+
+// Footer CSS
+#footer {
+  height: 210px;
+  background-color: #ebebeb;
+
+  #site-map {
+    margin-top: 66px;
+    .footer-link {
+        color: #585858;
+        font-size: 1.2rem;
+        font-weight: 900;
+        line-height: 33px;
+    }
+  }
+
+  #footer-divider {
+	  border: 0.5px solid #979797;
+  }
+
+  #privacy-terms {
+    a {
+      color: grey;
+    }
+  }
+}

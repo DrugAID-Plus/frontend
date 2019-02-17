@@ -1,3 +1,48 @@
-<p>
-  search works!
-</p>
+<section id="top">
+  <div class="top-all">
+    <div class="uk-container">
+      <div class="uk-margin uk-animation-slide-bottom-small" id="search">
+        <input class="uk-input" [(ngModel)]="query" id="search-bar" type="text" placeholder="Search a drug, a side effect, or anything">
+        <button class="uk-button" id="search-button" (click)="sendSearchRequest()">Search</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="main">
+  <div class="uk-container uk-align-center" *ngIf="_search.found == 'found'">
+    <!-- <h1 class="uk-text-center">{{_search.results.length}} Results</h1> -->
+    <div *ngFor="let result of _search.results" class="search-result uk-align-center uk-card uk-card-default uk-card-body uk-width-1-2@m">
+      <h3 class="uk-card-title">Default</h3>
+      <p>Lorem ipsum
+        <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+  </div>
+</section>
+
+<section id="footer">
+  <div class="uk-container">
+    <div id="site-map" class="uk-child-width-1-3@m uk-text-center" uk-grid>
+      <div>
+        <a class="footer-link">About Us</a>
+      </div>
+      <div>
+        <a class="footer-link">Search</a>
+      </div>
+      <div>
+        <a class="footer-link">Profile</a>
+      </div>
+    </div>
+    <hr id="footer-divider">
+    <div class="uk-child-width-expand" uk-grid>
+      <div id="copyright">
+        &copy; 2018 DrugAID+
+      </div>
+      <div class="uk-text-right" id="privacy-terms">
+        <a>Privacy</a>
+        /
+        <a>Terms</a>
+      </div>
+    </div>
+  </div>
+</section>

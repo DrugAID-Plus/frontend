@@ -5,8 +5,9 @@ import {
   ModuleWithProviders
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SharedImportsModule } from '../shared/shared-imports/shared-imports.module';
 @NgModule({
-  imports: [ CommonModule ],
+  imports: [ CommonModule, SharedImportsModule ],
   declarations: [],
   providers: [
   ]

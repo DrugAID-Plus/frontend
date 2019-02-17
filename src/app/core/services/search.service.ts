@@ -13,7 +13,7 @@ export class SearchService {
   /**
    * List of search results
    */
-  results: any[] = [];
+  _results: any[] = [];
   /**
    * String to see if data has been found
    */
@@ -39,17 +39,21 @@ export class SearchService {
     this.http.get(`${ this.searchUrl }/search?term=${ query }&sort_type=${ sort_type }`).subscribe(res => {
       if (res[ 'results' ].length === 0) {
         this.found = 'not_found';
-        this.results = [];
+        this._results = [];
       } else {
         this.found = 'found';
         for (let i = 0; i < res[ 'results' ].length; i++) {
           res[ 'results' ][ i ][ 'search_index' ] = i;
         }
-        this.results = res[ 'results' ];
+        this._results = res[ 'results' ];
       }
     });
   }
   getDrugByID(index) {
     return this.results[ index ];
+  }
+
+  get results() {
+    return this._results;
   }
 }
