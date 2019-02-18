@@ -44,6 +44,9 @@ export class SearchService {
         this.found = 'found';
         for (let i = 0; i < res[ 'results' ].length; i++) {
           res[ 'results' ][ i ][ 'search_index' ] = i;
+          if (res[ 'results' ][ i ][ 'structure_link' ]) {
+            res[ 'results' ][ i ][ 'structure_link' ] = res[ 'results' ][ i ][ 'structure_link' ].replace('image.svg', 'thumb.svg');
+          }
         }
         this._results = res[ 'results' ];
       }

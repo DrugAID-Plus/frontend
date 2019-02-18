@@ -70,7 +70,7 @@
 // Main CSS
 
 #main {
-  margin-top: -25%;
+  margin-top: -30%;
   min-height: 400px;
   #features {
     margin-bottom: -300px;
@@ -94,92 +94,26 @@
       line-height: 33px;
       text-align: center;
     }
-    
   }
 }
 
-
-// Most Searched CSS
-#most-searched {
-  background: url('/assets/images/most-searched-background.svg') no-repeat, url('/assets/images/most-searched-background.webp') no-repeat,
-  url('/assets/images/most-searched-background.png') no-repeat;
-  background-size: 100%;
-  height: 60vh;
-}
-
-// Database Size CSS
-#database-size {
-  background-color: #131623;
-  height: 72vh;
-  overflow: hidden;
-  .database-hr {
-    margin-top: 125.5px;
-    margin-bottom: 100px;
-    border: 3px solid #FFFFFF;
-  }
-  h1 {
-    color: #FFFFFF;
-    font-family: Avenir;
-    font-size: 3rem;
-    font-weight: 900;
-    line-height: 68px;
-    text-shadow: 0 2px 10px 0 rgba(126,124,124,0.5);
-  }
-
-  #line-chart {
-    width: 120%;
-  }
-  .svg-container {
-    margin-right: 0;
-    padding-right: 0;
-    margin-top: -200px;
-  }
-}
-
-// White Paper CSS
-
-#white-paper {
-  padding-top: 111px;
-  background-color: #F4F4F4;
-  h1 {
+.search-result {
+  border-radius: 21px;
+  width: 85%;
+	background-color: #FFFFFF;
+  box-shadow: 0 5px 22px 3px rgba(106,102,102,0.5);
+  
+  .uk-card-title {
     color: #000000;
-    font-size: 3.0rem;
-    font-weight: 900;
-    line-height: 68px;
+    font-family: Avenir;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 48px;
   }
-  .uk-container {
-    margin-bottom: 0;
-  }
-
-  #white-paper-image {
-    margin-bottom: 89px;
-    margin-top: 100px;
-    width: 369px;
-    height: 514px;
-    border-radius: 21px;
-    background-color: #FFFFFF;
-    box-shadow: 0 5px 22px 3px rgba(184,183,183,0.5);
-    text-align: center;
-    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-
-    &:hover {
-      box-shadow: none;
-      cursor: pointer;
-      transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-    }
-  }
-
-  p {
-  width: 70%;
-  margin: 0 auto;
-  text-align: justify;
-	color: #000000;
-	font-family: Avenir;
-	font-size: 1.5rem;
-	line-height: 33px;
+  .side-effect-count {
+      color: black;
   }
 }
-
 
 
 // Footer CSS

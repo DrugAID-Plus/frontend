@@ -13,9 +13,28 @@
   <div class="uk-container uk-align-center" *ngIf="_search.found == 'found'">
     <!-- <h1 class="uk-text-center">{{_search.results.length}} Results</h1> -->
     <div *ngFor="let result of _search.results" class="search-result uk-align-center uk-card uk-card-default uk-card-body uk-width-1-2@m">
-      <h3 class="uk-card-title">Default</h3>
-      <p>Lorem ipsum
-        <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <h3 class="uk-card-title" [innerHtml]="result['name']"></h3>
+      <div class="uk-grid-divider" uk-grid>
+        <div class="uk-width-expand@s">
+          <p>
+            <b>Description:</b> {{result['description']}}
+          </p>
+        </div>
+        <div class="uk-width-auto@s" *ngIf="result['structure_link']">
+          <img style="margin-top: -30px;" [src]="result['structure_link']" width="200px" height="200px">
+        </div>
+      </div>
+      <p>
+        <b>Common Brands: </b>
+        <span *ngFor="let name of result['generic_names']" [innerHtml]="name"></span>
+      </p>
+      <p>
+        <b>Generic Names: </b>
+        <span *ngFor="let name of result['common_brands']" [innerHtml]="name"></span>
+      </p>
+      <p class="side-effect-count">
+        <b>Total Side Effect Count:</b> {{result['side_effects']['count']['total']}}
+      </p>
     </div>
   </div>
 </section>
