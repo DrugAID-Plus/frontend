@@ -9,7 +9,7 @@ import { SearchService } from '../../../core/services/search.service';
 })
 export class SearchComponent implements OnInit {
   query = '';
-  constructor(private _router: Router, private activatedRoute: ActivatedRoute, private _search: SearchService) { }
+  constructor(private _router: Router, private activatedRoute: ActivatedRoute, public _search: SearchService) { }
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
