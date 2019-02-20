@@ -56,6 +56,10 @@ export class SearchService {
     return this.results[ index ];
   }
 
+  getDrugFromDatabase(search_name) {
+    return this.http.get(`${ this.searchUrl }/drug?search_name=${ search_name }`);
+  }
+
   get results() {
     return this._results;
   }

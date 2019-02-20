@@ -15,7 +15,6 @@ export class SearchComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       this.query = params[ 'query' ];
       if (this.query.trim() !== '') {
-        console.log(this.query);
         this._search.searchES(this.query);
       }
     });
@@ -23,6 +22,10 @@ export class SearchComponent implements OnInit {
 
   sendSearchRequest() {
     this._router.navigateByUrl(`/search?query=${ this.query }`);
+  }
+
+  openDrugPage(search_name) {
+    this._router.navigateByUrl(`/drugs/drug/${ search_name }`);
   }
 
 
