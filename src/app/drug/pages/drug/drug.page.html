@@ -1,3 +1,84 @@
-<p>
-  drug works!
-</p>
+<section id="top">
+  <div class="top-all">
+  </div>
+</section>
+
+<section id="main">
+  <div class="uk-container uk-align-center">
+    <!-- <h1 class="uk-text-center">{{_search.drugs.length}} drugs</h1> -->
+    <div *ngIf="drug !== undefined" class="drug uk-align-center uk-card uk-card-default uk-card-body uk-width-1-2@m">
+      <h3 class="uk-card-title" [innerHtml]="drug['name']"></h3>
+      <div class="uk-grid-divider" uk-grid>
+        <div class="uk-width-expand@s">
+          <p>
+            {{drug['description']}}
+          </p>
+        </div>
+        <div class="uk-width-auto@s" *ngIf="drug['structure_link']">
+          <img style="margin-top: -30px;" [src]="drug['structure_link']" width="200px" height="200px">
+        </div>
+      </div>
+      <ul class="uk-flex-center" uk-tab>
+        <li class="uk-active">
+          <a (click)="switchTab('side-effects')">Side Effects</a>
+        </li>
+        <li>
+          <a (click)="switchTab('general-information')">General Information</a>
+        </li>
+      </ul>
+      <div *ngIf="tab == 'side-effects'">
+        <div uk-grid>
+          <h1 class="uk-text-lead" id="ade-title">Common Side Effects</h1>
+          <!-- // TODO add Number Count with Pie Chart -->
+        </div>
+        <div class="side-effects" *ngIf="reported_effects !== undefined">
+          <div *ngFor="let category of reported_effects_keys">
+            <div *ngIf="reported_effects[category]['side_effects'].length !== 0">
+              <h1 class="uk-text-lead ade-category">{{capitalize(category)}}</h1>
+              <p>{{reported_effects[category]['definition']}}</p>
+              <p># of Occurences: {{reported_effects[category]['side_effects'].length}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="tab == 'general-information'">
+        <p>
+          <b>Common Brands: </b>
+          <span *ngFor="let name of drug['generic_names']" [innerHtml]="name"></span>
+        </p>
+        <p>
+          <b>Generic Names: </b>
+          <span *ngFor="let name of drug['common_brands']" [innerHtml]="name"></span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="footer">
+  <div class="uk-container">
+    <div id="site-map" class="uk-child-width-1-3@m uk-text-center" uk-grid>
+      <div>
+        <a class="footer-link">About Us</a>
+      </div>
+      <div>
+        <a class="footer-link">Search</a>
+      </div>
+      <div>
+        <a class="footer-link">Profile</a>
+      </div>
+    </div>
+    <hr id="footer-divider">
+    <div class="uk-child-width-expand" uk-grid>
+      <div id="copyright">
+        &copy; 2018 DrugAID+
+      </div>
+      <div class="uk-text-right" id="privacy-terms">
+        <a>Privacy</a>
+        /
+        <a>Terms</a>
+      </div>
+    </div>
+  </div>
+</section>

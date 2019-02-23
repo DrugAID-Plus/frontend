@@ -1,7 +1,8 @@
 <nav class="uk-navbar-transparent uk-navbar uk-navbar-container" uk-scrollspy="cls: uk-animation-fade; delay: 500" uk-navbar>
 
   <div class="uk-navbar-left">
-    <img id="logo" src="/assets/images/logo.webp" alt="">
+    <img id="logo" src="/assets/images/logo.webp" alt="" *ngIf="!isDrugPage">
+    <span *ngIf="isDrugPage" (click)="goBack()" class="uk-icon-link" uk-icon="icon: arrow-left; ratio: 3.0" id="back-arrow"></span>
   </div>
 
   <div class="uk-navbar-right">
