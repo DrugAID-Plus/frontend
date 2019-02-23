@@ -32,11 +32,21 @@
           <!-- // TODO add Number Count with Pie Chart -->
         </div>
         <div class="side-effects" *ngIf="reported_effects !== undefined">
-          <div *ngFor="let category of reported_effects_keys">
+          <div *ngFor="let category of reported_effects_keys" class="category">
             <div *ngIf="reported_effects[category]['side_effects'].length !== 0">
               <h1 class="uk-text-lead ade-category">{{capitalize(category)}}</h1>
               <p>{{reported_effects[category]['definition']}}</p>
               <p># of Occurences: {{reported_effects[category]['side_effects'].length}}</p>
+              <div class="ades">
+                <div class="ade uk-card uk-card-default uk-card-body" *ngFor="let ade of reported_effects[category]['side_effects']">
+                  <p class="extracted-ade">
+                    <b>{{capitalize(ade['ade'])}}</b>
+                  </p>
+                  <p class="review">
+                    <a uk-toggle="target: #drug-modal" (click)="viewReview(ade)">View Review</a>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -82,3 +92,15 @@
     </div>
   </div>
 </section>
+
+<div id="drug-modal" class="uk-flex-top" uk-modal>
+  <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <p>
+      <b>Review: </b>{{reviewText}}</p>
+    <p>
+      <b>Extracted Side Effect: </b>{{extractedAde}}</p>
+    <p>
+      <b>Source: </b>WebMD</p>
+  </div>
+</div>

@@ -2,6 +2,7 @@ import { SearchService } from './../../../core/services/search.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+declare const UIkit: any;
 
 @Component({
   selector: 'app-drug',
@@ -10,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DrugComponent implements OnInit {
   drug: any = undefined;
+  extractedAde = '';
+  reviewText = '';
   reported_effects_keys: any = undefined;
   reported_effects: any = undefined;
   tab: 'side-effects' | 'general-information' = 'side-effects';
@@ -35,6 +38,10 @@ export class DrugComponent implements OnInit {
 
   }
 
+  viewReview(data) {
+    this.extractedAde = data[ 'ade' ];
+    this.reviewText = data[ 'sentence' ];
+  }
   switchTab(tab) {
     this.tab = tab;
   }
