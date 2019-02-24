@@ -59,9 +59,6 @@
   transition: all 0.2s;
   
   .uk-card-title {
-    &:hover {
-      text-decoration: underline;
-    }
     color: #000000;
     font-family: Avenir;
     font-size: 35px;
@@ -101,18 +98,25 @@
     width: 108.5%;
     background-color: #EFEFEF;
     -webkit-overflow-scrolling: touch;
+    .hidden-card {
+        width: 0px !important;
+        padding: 0px !important;
+        color: #EFEFEF !important;
+        box-shadow: none !important;
+      }
     .ade {
 
       &:first-child {
-        margin-left: 30px;
+        margin-left: 50px;
       }
 
       &:last-child {
-        margin-right: 30px;
+        margin-right: -20px;
       }
       flex: 0 0 auto;
       margin: 50px 10px;
-      max-height: 200px;
+      padding: 30px;
+      max-height: 150px;
       width: 200px;
       .review {
         line-height: 0.8em;
@@ -121,6 +125,7 @@
         overflow: hidden;
         font-size: 0.8rem;
       }
+
 
       .extracted-ade {
         color: black;

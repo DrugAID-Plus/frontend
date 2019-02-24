@@ -25,7 +25,7 @@ export class SearchComponent implements OnInit {
   }
 
   openDrugPage(search_name) {
-    this._router.navigateByUrl(`/drugs/drug/${ search_name }`);
+    this._router.navigateByUrl(`/drugs/drug/${ search_name }?found=directly`);
   }
 
 

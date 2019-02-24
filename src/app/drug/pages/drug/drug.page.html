@@ -46,6 +46,11 @@
                     <a uk-toggle="target: #drug-modal" (click)="viewReview(ade)">View Review</a>
                   </p>
                 </div>
+                <div class="ade hidden-card uk-card uk-card-default uk-card-body">
+                  <p class="hidden">
+                    <b>hidden</b>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -57,9 +62,21 @@
           <span *ngFor="let name of drug['generic_names']" [innerHtml]="name"></span>
         </p>
         <p>
+          <b>Uses: </b>
+          {{drug['uses']}}
+        </p>
+        <p>
           <b>Generic Names: </b>
           <span *ngFor="let name of drug['common_brands']" [innerHtml]="name"></span>
         </p>
+        <p [innerHtml]="subscript(drug['chemical formula'])">
+
+        </p>
+        <p>
+          <b>Type: </b>
+          {{drug['type']}}
+        </p>
+
       </div>
 
     </div>
@@ -96,11 +113,10 @@
 <div id="drug-modal" class="uk-flex-top" uk-modal>
   <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
     <button class="uk-modal-close-default" type="button" uk-close></button>
-    <p>
-      <b>Review: </b>{{reviewText}}</p>
-    <p>
-      <b>Extracted Side Effect: </b>{{extractedAde}}</p>
-    <p>
-      <b>Source: </b>WebMD</p>
+    <p [innerHtml]="reviewText">
+      <p>
+        <b>Extracted Side Effect: </b>{{extractedAde}}</p>
+      <p>
+        <b>Source: </b>WebMD</p>
   </div>
 </div>

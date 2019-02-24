@@ -28,7 +28,6 @@ export class DrugComponent implements OnInit {
           this.drug = res[ 'result' ][ 0 ];
           this.reported_effects_keys = Object.keys(this.drug[ 'side_effects' ][ 'reported_effects' ]);
           this.reported_effects = this.drug[ 'side_effects' ][ 'reported_effects' ];
-          console.log(this.reported_effects);
         });
       }
     });
@@ -40,10 +39,16 @@ export class DrugComponent implements OnInit {
 
   viewReview(data) {
     this.extractedAde = data[ 'ade' ];
-    this.reviewText = data[ 'sentence' ];
+
+    this.reviewText = '<b>Review: </b>' + data[ 'sentence' ]
+      .replace(data[ 'ade' ], '<b>' + data[ 'ade' ] + '</b>');
   }
   switchTab(tab) {
     this.tab = tab;
+  }
+
+  subscript(formula) {
+    return '<b>Chemical Formula: </b>' + formula.replace(/(\d+)/g, '<sub>$1</sub>');
   }
 
   capitalize(word) {
