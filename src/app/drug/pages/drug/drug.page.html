@@ -29,7 +29,8 @@
       <div *ngIf="tab == 'side-effects'">
         <div uk-grid>
           <h1 class="uk-text-lead" id="ade-title">Common Side Effects</h1>
-          <!-- // TODO add Number Count with Pie Chart -->
+          <ngx-charts-pie-chart [animations]="false" [view]="view" [doughnut]="true" [results]="side_effect_count_pie_data"></ngx-charts-pie-chart>
+          <p class="total-count">{{totalCount}}</p>
         </div>
         <div class="side-effects" *ngIf="reported_effects !== undefined">
           <div *ngFor="let category of reported_effects_keys" class="category">

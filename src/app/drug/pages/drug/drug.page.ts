@@ -11,9 +11,13 @@ declare const UIkit: any;
 })
 export class DrugComponent implements OnInit {
   drug: any = undefined;
+  isReady = false;
+  view: any[] = [ 300, 200 ];
+  totalCount = 0;
   extractedAde = '';
   reviewText = '';
   reported_effects_keys: any = undefined;
+  side_effect_count_pie_data: Array<Object> = [];
   reported_effects: any = undefined;
   tab: 'side-effects' | 'general-information' = 'side-effects';
   id;
@@ -28,11 +32,24 @@ export class DrugComponent implements OnInit {
           this.drug = res[ 'result' ][ 0 ];
           this.reported_effects_keys = Object.keys(this.drug[ 'side_effects' ][ 'reported_effects' ]);
           this.reported_effects = this.drug[ 'side_effects' ][ 'reported_effects' ];
+
+          this.createPieChart();
         });
       }
     });
   }
 
+  createPieChart() {
+    this.reported_effects_keys.forEach((classification, index) => {
+      if (this.reported_effects[ classification ][ 'side_effects' ].length !== 0) {
+        this.side_effect_count_pie_data.push({
+          'name': this.capitalize(classification),
+          'value': this.reported_effects[ classification ][ 'side_effects' ].length
+        });
+        this.totalCount += this.reported_effects[ classification ][ 'side_effects' ].length;
+      }
+    });
+  }
   ngOnInit() {
 
   }

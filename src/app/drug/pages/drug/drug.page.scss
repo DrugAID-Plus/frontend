@@ -68,6 +68,14 @@
   .side-effect-count {
       color: black;
   }
+  .total-count {
+    position: relative;
+    left: -22%;
+    color: black;
+    top: 80px;
+    font-weight: bold;
+    font-size: 30px;
+  }
   
   .uk-active { 
     font-weight: bold;
