@@ -10,6 +10,8 @@ declare const UIkit: any;
   styleUrls: [ './drug.page.scss' ]
 })
 export class DrugComponent implements OnInit {
+  officialVerified: any;
+  doctorVerified: any;
   drug: any = undefined;
   isReady = false;
   view: any[] = [ 300, 200 ];
@@ -56,7 +58,9 @@ export class DrugComponent implements OnInit {
 
   viewReview(data) {
     this.extractedAde = data[ 'ade' ];
-
+    this.doctorVerified = data[ 'doctor_verified' ] ? 'Yes' : 'No';
+    this.officialVerified = data[ 'official_verified' ] ? 'Yes' : 'No';
+    console.log(this.doctorVerified);
     this.reviewText = '<b>Review: </b>' + data[ 'sentence' ]
       .replace(data[ 'ade' ], '<b>' + data[ 'ade' ] + '</b>');
   }
