@@ -15,10 +15,13 @@ export class DrugComponent implements OnInit {
   drug: any = undefined;
   isReady = false;
   view: any[] = [ 300, 200 ];
-  view_area = [ 300, 400 ];
+  view_area = [ 400, 300 ];
   totalCount = 0;
   extractedAde = '';
   reviewText = '';
+  colorScheme = {
+    domain: [ '#6091C1', '#A10A28', '#C7B42C', '#AAAAAA' ]
+  };
   cardinalCurve = curveCardinal;
   reported_effects_keys: any = undefined;
   side_effect_count_pie_data: Array<Object> = [];
