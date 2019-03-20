@@ -29,8 +29,12 @@
       <div *ngIf="tab == 'side-effects'">
         <div uk-grid>
           <h1 class="uk-text-lead" id="ade-title">Common Side Effects</h1>
-          <ngx-charts-pie-chart [animations]="false" [view]="view" [doughnut]="true" [results]="side_effect_count_pie_data"></ngx-charts-pie-chart>
-          <p class="total-count">{{totalCount}}</p>
+          <ngx-charts-area-chart [xAxisLabel]="'FDA Report Count'" [curve]="cardinalCurve" [showXAxisLabel]="true" [xAxis]="true" [yAxis]="true"
+            [view]="view" [autoScale]="true" [animations]="false" [results]="final_dates"></ngx-charts-area-chart>
+          <div>
+            <ngx-charts-pie-chart [animations]="false" [view]="view" [doughnut]="true" [results]="side_effect_count_pie_data"></ngx-charts-pie-chart>
+            <p class="total-count">{{totalCount}}</p>
+          </div>
         </div>
         <div class="verified-description">
           <div class="uk-flex verified-key">

@@ -1,7 +1,7 @@
 import { SearchService } from './../../../core/services/search.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { curveCardinal } from 'd3-shape';
 declare const UIkit: any;
 
 @Component({
@@ -15,14 +15,19 @@ export class DrugComponent implements OnInit {
   drug: any = undefined;
   isReady = false;
   view: any[] = [ 300, 200 ];
+  view_area = [ 300, 400 ];
   totalCount = 0;
   extractedAde = '';
   reviewText = '';
+  cardinalCurve = curveCardinal;
   reported_effects_keys: any = undefined;
   side_effect_count_pie_data: Array<Object> = [];
   reported_effects: any = undefined;
   tab: 'side-effects' | 'general-information' = 'side-effects';
   id;
+  dates = {};
+  xTicks = [];
+  final_dates = {};
   constructor(private _route: ActivatedRoute, private _search: SearchService) {
     this._route.params.subscribe(params => {
       if (!isNaN(params[ 'id' ])) {
@@ -36,6 +41,26 @@ export class DrugComponent implements OnInit {
           this.reported_effects = this.drug[ 'side_effects' ][ 'reported_effects' ];
 
           this.createPieChart();
+          let initialYear = '';
+          let initialCount = 0;
+          this.dates = [ { 'name': this.capitalize(this.id), 'series': [] } ];
+          this._search.getFDAReportDates(this.id).subscribe((value) => {
+            value.forEach((val, index) => {
+              if (val[ 'time' ] !== initialYear || index === value.length - 1) {
+                if (initialYear !== '') {
+                  this.xTicks.push(initialYear);
+                  this.dates[ 0 ][ 'series' ].push({ 'name': initialYear, 'value': initialCount });
+                  if (index === value.length - 1) {
+                    this.createLineChart(this.dates);
+                  }
+                }
+                initialYear = val[ 'time' ];
+                initialCount = 0;
+              } else {
+                initialCount += val[ 'count' ];
+              }
+            });
+          });
         });
       }
     });
@@ -52,8 +77,12 @@ export class DrugComponent implements OnInit {
       }
     });
   }
-  ngOnInit() {
 
+  createLineChart(dates) {
+    this.final_dates = dates;
+  }
+
+  ngOnInit() {
   }
 
   viewReview(data) {

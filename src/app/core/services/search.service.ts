@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
+import { pluck, map } from 'rxjs/operators';
 /**
  * Search service to handle all requests to elastic search and searching the Bible
  */
@@ -19,6 +20,8 @@ export class SearchService {
    * String to see if data has been found
    */
   found = 'not_found';
+
+  FDA_URL = '';
   /**
    * Elasticsearch URL provided by the environment
    */
@@ -28,6 +31,12 @@ export class SearchService {
    * @param http Http Client dependency to handle http requests
    */
   constructor(private http: HttpClient, private _router: Router) {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+    const recentDate = `${ yyyy }${ mm }${ dd }`;
+    this.FDA_URL = `https://api.fda.gov/drug/event.json?search=(receivedate:20040101+TO+${ recentDate })+AND+patient.drug.openfda.brand_name:Janumet&count=receivedate`;
     this.searchUrl = environment.es_url;
   }
   /**
@@ -58,6 +67,21 @@ export class SearchService {
   }
   getDrugByID(index) {
     return this.results[ index ];
+  }
+
+  getFDAReportDates(search_name) {
+    const drugName = search_name;
+    const dateSearch = this.FDA_URL.replace('Janumet', drugName);
+    console.log(dateSearch);
+    return this.http.get(dateSearch).pipe(
+      pluck('results'),
+      map((value: any[]) => {
+        value.forEach((val, index) => {
+          value[ index ][ 'time' ] = val[ 'time' ].slice(0, 4);
+        });
+        return value;
+      })
+    );
   }
 
   getDrugFromDatabase(search_name) {
