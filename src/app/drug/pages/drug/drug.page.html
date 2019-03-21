@@ -25,16 +25,24 @@
         <li>
           <a (click)="switchTab('general-information')">General Information</a>
         </li>
+        <li>
+          <a (click)="switchTab('fda-information')">FDA Information</a>
+        </li>
       </ul>
       <div *ngIf="tab == 'side-effects'">
-        <h1 class="uk-text-lead" id="ade-title">Common Side Effects</h1>
         <div class="uk-container" uk-grid>
-          <ngx-charts-area-chart [scheme]="colorScheme" [xAxisLabel]="'FDA Report Count'" [curve]="cardinalCurve" [showXAxisLabel]="true"
-            [xAxis]="true" [yAxis]="true" [view]="view_area" [autoScale]="true" [animations]="false" [results]="final_dates"></ngx-charts-area-chart>
-          <div>
-            <ngx-charts-pie-chart [animations]="false" [view]="view" [doughnut]="true" [results]="side_effect_count_pie_data"></ngx-charts-pie-chart>
-            <p class="total-count">{{totalCount}}</p>
+          <h1 class="uk-text-lead section-title">Common Side Effects</h1>
+          <div class="pie-chart-count">
+            <ngx-charts-pie-chart [animations]="true" [view]="view" [doughnut]="true" [results]="side_effect_count_pie_data"></ngx-charts-pie-chart>
+            <p class="total-count" uk-scrollspy="cls: uk-animation-fade; delay: 200">{{totalCount}}</p>
           </div>
+        </div>
+        <div class="uk-container infographics" uk-grid>
+          <ngx-charts-area-chart [scheme]="colorScheme" [xAxisLabel]="'FDA Report Count'" [curve]="cardinalCurve" [showXAxisLabel]="true"
+            [xAxis]="true" [yAxis]="true" [view]="view_area" [autoScale]="true" [animations]="true" [results]="final_dates"></ngx-charts-area-chart>
+          <ngx-charts-bar-vertical [view]="view_area" [results]="top5Drugs" [gradient]="gradient" [xAxis]="true" [yAxis]="true" [showXAxisLabel]="true"
+            [xAxisLabel]="'Top 5 Drug Side Effects'" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+          </ngx-charts-bar-vertical>
         </div>
         <div class="verified-description">
           <div class="uk-flex verified-key">
@@ -95,8 +103,9 @@
         </div>
       </div>
       <div *ngIf="tab == 'general-information'">
+        <h1 class="uk-text-lead section-title">General Information</h1>
         <p>
-          <b>Common Brands: </b>
+          <b>Common Brand Names: </b>
           <span *ngFor="let name of drug['generic_names']" [innerHtml]="name"></span>
         </p>
         <p>
@@ -114,7 +123,16 @@
           <b>Type: </b>
           {{drug['type']}}
         </p>
-
+      </div>
+      <div *ngIf="tab == 'fda-information'">
+        <h1 class="uk-text-lead section-title">FDA Drug Label</h1>
+        <div style="margin-left: -3px;" [innerHtml]="drugLabel['recent_major_changes_table']"></div>
+        <p>
+          <b>Manufacture Name: </b> {{drugLabel['openfda']['manufacturer_name']}}</p>
+        <p>
+          <b>Laboratory Tests: </b> {{drugLabel['laboratory_tests']}}</p>
+        <p>
+          <b>Overdosage: </b> {{drugLabel['overdosage']}}</p>
       </div>
 
     </div>

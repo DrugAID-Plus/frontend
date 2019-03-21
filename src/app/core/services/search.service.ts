@@ -22,6 +22,7 @@ export class SearchService {
   found = 'not_found';
 
   FDA_URL = '';
+  FDA_LABEL_URL = '';
   /**
    * Elasticsearch URL provided by the environment
    */
@@ -37,6 +38,7 @@ export class SearchService {
     const yyyy = today.getFullYear();
     const recentDate = `${ yyyy }${ mm }${ dd }`;
     this.FDA_URL = `https://api.fda.gov/drug/event.json?search=(receivedate:20040101+TO+${ recentDate })+AND+patient.drug.openfda.brand_name:Janumet&count=receivedate`;
+    this.FDA_LABEL_URL = `https://api.fda.gov/drug/label.json?search=openfda.brand_name:Janumet`;
     this.searchUrl = environment.es_url;
   }
   /**
@@ -81,6 +83,15 @@ export class SearchService {
         });
         return value;
       })
+    );
+  }
+
+  getFDADrugLabel(search_name) {
+    const drugName = search_name;
+    const dateSearch = this.FDA_LABEL_URL.replace('Janumet', drugName);
+    return this.http.get(dateSearch).pipe(
+      pluck('results'),
+      map(val => val[ 0 ])
     );
   }
 

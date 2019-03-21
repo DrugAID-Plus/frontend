@@ -19,6 +19,8 @@ export class DrugComponent implements OnInit {
   totalCount = 0;
   extractedAde = '';
   reviewText = '';
+
+  drugLabel;
   colorScheme = {
     domain: [ '#6091C1', '#A10A28', '#C7B42C', '#AAAAAA' ]
   };
@@ -26,9 +28,11 @@ export class DrugComponent implements OnInit {
   reported_effects_keys: any = undefined;
   side_effect_count_pie_data: Array<Object> = [];
   reported_effects: any = undefined;
-  tab: 'side-effects' | 'general-information' = 'side-effects';
+  tab: 'side-effects' | 'general-information' | 'fda-information' = 'side-effects';
   id;
   dates = {};
+
+  top5Drugs = [];
   xTicks = [];
   final_dates = {};
   constructor(private _route: ActivatedRoute, private _search: SearchService) {
@@ -42,7 +46,8 @@ export class DrugComponent implements OnInit {
           this.drug = res[ 'result' ][ 0 ];
           this.reported_effects_keys = Object.keys(this.drug[ 'side_effects' ][ 'reported_effects' ]);
           this.reported_effects = this.drug[ 'side_effects' ][ 'reported_effects' ];
-
+          this.top5Drugs = this.getTopFive();
+          this.getDrugLabel();
           this.createPieChart();
           let initialYear = '';
           let initialCount = 0;
@@ -79,6 +84,45 @@ export class DrugComponent implements OnInit {
         this.totalCount += this.reported_effects[ classification ][ 'side_effects' ].length;
       }
     });
+  }
+
+  getDrugLabel() {
+    this._search.getFDADrugLabel(this.id).subscribe((value) => {
+      this.drugLabel = value;
+      console.log(this.drugLabel);
+    });
+  }
+
+  getTopFive() {
+    const uniqueSideEffects = {};
+    this.reported_effects_keys.forEach((classification, index) => {
+      if (this.reported_effects[ classification ][ 'side_effects' ].length !== 0) {
+        this.reported_effects[ classification ][ 'side_effects' ].forEach((sideEffect) => {
+          const ade = sideEffect[ 'ade' ].toLowerCase();
+          if (Object.keys(uniqueSideEffects).indexOf(ade) === -1) {
+            uniqueSideEffects[ ade ] = 1;
+          } else {
+            uniqueSideEffects[ ade ] += 1;
+          }
+        });
+      }
+    });
+    const items = Object.keys(uniqueSideEffects).map((key) => {
+      return [ this.capitalize(key), uniqueSideEffects[ key ] ];
+    });
+    items.sort(function (first, second) {
+      return second[ 1 ] - first[ 1 ];
+    });
+    const top5 = items.slice(0, 5);
+    const final_top5 = [];
+    top5.forEach((value) => {
+      final_top5.push({
+        'name': value[ 0 ],
+        'value': value[ 1 ]
+      });
+    });
+    console.log(final_top5);
+    return final_top5;
   }
 
   createLineChart(dates) {
