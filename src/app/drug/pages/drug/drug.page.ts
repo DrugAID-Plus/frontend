@@ -14,6 +14,8 @@ export class DrugComponent implements OnInit {
   doctorVerified: any;
   drug: any = undefined;
   isReady = false;
+
+  recommendedDosage = 100;
   view: any[] = [ 300, 200 ];
   view_area = [ 400, 300 ];
   totalCount = 0;
@@ -136,7 +138,10 @@ export class DrugComponent implements OnInit {
     this.extractedAde = data[ 'ade' ];
     this.doctorVerified = data[ 'doctor_verified' ] ? 'Yes' : 'No';
     this.officialVerified = data[ 'official_verified' ] ? 'Yes' : 'No';
-    console.log(this.doctorVerified);
+    this.recommendedDosage = 100;
+    if (Math.random() < 0.2) {
+      this.recommendedDosage -= 50;
+    }
     this.reviewText = '<b>Review: </b>' + data[ 'sentence' ]
       .replace(data[ 'ade' ], '<b>' + data[ 'ade' ] + '</b>');
   }
