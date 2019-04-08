@@ -10,7 +10,7 @@
 </section>
 
 <section id="main">
-  <div class="uk-container uk-align-center" *ngIf="_search.found == 'found'">
+  <div class="uk-container uk-align-center" *ngIf="_search.found == 'found' && _search.display">
     <!-- <h1 class="uk-text-center">{{_search.results.length}} Results</h1> -->
     <div *ngFor="let result of _search.results" (click)="openDrugPage(result['search_name'])" class="search-result uk-align-center uk-card uk-card-default uk-card-body uk-width-1-2@m">
       <h3 class="uk-card-title" [innerHtml]="result['name']"></h3>

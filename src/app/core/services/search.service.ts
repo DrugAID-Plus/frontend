@@ -16,6 +16,7 @@ export class SearchService {
    * List of search results
    */
   _results: any[] = [];
+  display = false;
   /**
    * String to see if data has been found
    */
@@ -48,6 +49,7 @@ export class SearchService {
    */
   searchES(query, sort_type = 'relevant') {
     this.found = 'pending';
+    this.display = false;
     this.http.get(`${ this.searchUrl }/search?term=${ query }&sort_type=${ sort_type }`).subscribe(res => {
       if (res[ 'results' ].length === 0) {
         this.found = 'not_found';
@@ -63,7 +65,9 @@ export class SearchService {
         this._results = res[ 'results' ];
         if (this.checkIfDrug(query)) {
           this._router.navigateByUrl(`/drugs/drug/${ query.toLowerCase() }?found=directly`);
+          this.display = false;
         }
+        this.display = true;
       }
     });
   }

@@ -28,6 +28,9 @@
         <li>
           <a (click)="switchTab('fda-information')">FDA Information</a>
         </li>
+        <li>
+          <a (click)="switchTab('polypharmacy')">Polypharmacy</a>
+        </li>
       </ul>
       <div *ngIf="tab == 'side-effects'">
         <div class="uk-container" uk-grid>
@@ -134,7 +137,12 @@
         <p>
           <b>Overdosage: </b> {{drugLabel['overdosage']}}</p>
       </div>
-
+      <div *ngIf="tab == 'polypharmacy'">
+        <h1 class="uk-text-lead section-title">Polypharmaceutical Interactions</h1>
+        <p *ngFor="let interaction of interactions">
+          <b>{{interaction['name']}}: </b> {{interaction['information']}}
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -171,7 +179,7 @@
     <button class="uk-modal-close-default" type="button" uk-close></button>
     <p [innerHtml]="reviewText"></p>
     <p>
-      <b>Drug Dosage Used: </b>{{recommendedDosage}}
+      <b>Drug Dosage Used: </b>{{recommendedDosage}}mg
     </p>
     <p>
       <b>Extracted Side Effect: </b>{{extractedAde}}</p>

@@ -14,6 +14,7 @@ export class DrugComponent implements OnInit {
   doctorVerified: any;
   drug: any = undefined;
   isReady = false;
+  interactions = [];
 
   recommendedDosage = 100;
   view: any[] = [ 300, 200 ];
@@ -30,7 +31,7 @@ export class DrugComponent implements OnInit {
   reported_effects_keys: any = undefined;
   side_effect_count_pie_data: Array<Object> = [];
   reported_effects: any = undefined;
-  tab: 'side-effects' | 'general-information' | 'fda-information' = 'side-effects';
+  tab: 'side-effects' | 'general-information' | 'fda-information' | 'polypharmacy' = 'side-effects';
   id;
   dates = {};
 
@@ -48,6 +49,9 @@ export class DrugComponent implements OnInit {
           this.drug = res[ 'result' ][ 0 ];
           this.reported_effects_keys = Object.keys(this.drug[ 'side_effects' ][ 'reported_effects' ]);
           this.reported_effects = this.drug[ 'side_effects' ][ 'reported_effects' ];
+          console.log(this.drug);
+          this.interactions = this.drug[ 'polypharmacy' ];
+          console.log(this.interactions);
           this.top5Drugs = this.getTopFive();
           this.getDrugLabel();
           this.createPieChart();
